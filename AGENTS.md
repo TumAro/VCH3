@@ -85,7 +85,7 @@ You operate strictly under the **Spec-Driven Development (SDD)** paradigm. You m
 - When unsure, treat the task as requiring a spec.
 
 ### Spec Files
-- Specs live in `Documentation/Specs/`. Spec memory lives in `Documentation/Specs/Memory/`. Never write a spec in the memory folder, or memory in the specs folder.
+- Specs live in `docs\spec`. Spec memory lives in `docs\spec\memory\`. Never write a spec in the memory folder, or memory in the specs folder.
 - **One document per spec.** Spec, plan, and tasks all live in the same file.
 - **Filename** (lowercase kebab-case): `{category}-{name}[-phase{N}]-{NNN}.md`
   - `category`: one of `feature`, `refactor`, `bugfix`, `migration`, `chore`. If none fits, ask the user.
