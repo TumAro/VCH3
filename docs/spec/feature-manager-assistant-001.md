@@ -158,7 +158,7 @@ The feature will use retrieval over verified application data and project rules 
 
 ## 3. Tasks
 
-- [ ] **T1 - Assistant models and evidence contracts** (REQ-1, REQ-3, REQ-11, REQ-13). Done when immutable typed response/citation/task models and one evidence repository contract exist.
+- [x] **T1 - Assistant models and evidence contracts** (REQ-1, REQ-3, REQ-11, REQ-13). Done when immutable typed response/citation/task models and one evidence repository contract exist.
 - [ ] **T2 - Evidence retrieval service** (REQ-1, REQ-2, REQ-7, REQ-10, REQ-11). Done when deterministic evidence selection works for network, state, city, store, findings, moves, and notification scopes.
 - [ ] **T3 - Daily task service** (REQ-4, REQ-5). Done when tasks are capped at five, ranked, ownership/action/timing complete, and all impact values come from evidence records.
 - [ ] **T4 - Documentation and rule retrieval** (REQ-1, REQ-3). Done when approved project rules and source chunks are retrieved through the same evidence abstraction and expose stable source IDs.
