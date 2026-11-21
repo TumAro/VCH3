@@ -7,6 +7,7 @@ import { initProfile } from "./profile.js";
 import { initNotifications, refreshNotifications } from "./notifications.js";
 import { renderOverview, repaintChart } from "./overview.js";
 import { initMoves, loadMoves, setStores } from "./moves.js";
+import { initAssistant } from "./assistant.js";
 
 function showError(message) {
   const error = document.getElementById("rerun-error");
@@ -46,6 +47,7 @@ initTheme(repaintChart);
 initTabs();
 initProfile();
 initMoves();
+initAssistant();
 initRerun();
 initNotifications();
 loadAll().catch((e) => showError("Could not load data. " + e.message));

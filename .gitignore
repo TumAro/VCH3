@@ -7,3 +7,4 @@ __pycache__/
 moves.csv
 moves.xlsx
 *.pyc
+*.env

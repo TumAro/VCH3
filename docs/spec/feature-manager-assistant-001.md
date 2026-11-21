@@ -1,5 +1,5 @@
 # Manager Assistant and Evidence-Retrieval Chat
-- Status: In Progress
+- Status: Blocked
 - Created: 2026-11-21
 
 ## 1. Spec
@@ -159,11 +159,13 @@ The feature will use retrieval over verified application data and project rules 
 ## 3. Tasks
 
 - [x] **T1 - Assistant models and evidence contracts** (REQ-1, REQ-3, REQ-11, REQ-13). Done when immutable typed response/citation/task models and one evidence repository contract exist.
-- [ ] **T2 - Evidence retrieval service** (REQ-1, REQ-2, REQ-7, REQ-10, REQ-11). Done when deterministic evidence selection works for network, state, city, store, findings, moves, and notification scopes.
-- [ ] **T3 - Daily task service** (REQ-4, REQ-5). Done when tasks are capped at five, ranked, ownership/action/timing complete, and all impact values come from evidence records.
-- [ ] **T4 - Documentation and rule retrieval** (REQ-1, REQ-3). Done when approved project rules and source chunks are retrieved through the same evidence abstraction and expose stable source IDs.
-- [ ] **T5 - Provider protocol and Sarvam adapter** (REQ-6, REQ-8, REQ-14). Done when missing key, timeout, HTTP failure, and malformed response produce typed failures and the key stays server-side.
-- [ ] **T6 - Assistant orchestration service** (REQ-1, REQ-8, REQ-11). Done when evidence is retrieved before provider text, provider output is validated, and provider wording cannot change facts.
+- [x] **T2 - Evidence retrieval service** (REQ-1, REQ-2, REQ-7, REQ-10, REQ-11). Done when deterministic evidence selection works for network, state, city, store, findings, moves, and notification scopes.
+- [x] **T3 - Daily task service** (REQ-4, REQ-5). Done when tasks are capped at five, ranked, ownership/action/timing complete, and all impact values come from evidence records.
+- [x] **T4 - Documentation and rule retrieval** (REQ-1, REQ-3). Done when approved project rules and source chunks are retrieved through the same evidence abstraction and expose stable source IDs.
+- [x] **T5 - Provider protocol and Sarvam adapter** (REQ-6, REQ-8, REQ-14). Done when missing key, timeout, HTTP failure, and malformed response produce typed failures and the key stays server-side.
+- [x] **T6 - Assistant orchestration service** (REQ-1, REQ-8, REQ-11). Done when evidence is retrieved before provider text, provider output is validated, and provider wording cannot change facts.
 - [ ] **T7 - API endpoints and re-run integration** (REQ-2, REQ-9, REQ-10). Done when status/chat/daily-briefing routes work and evidence refreshes after a successful re-run.
 - [ ] **T8 - Dashboard chat panel** (REQ-12). Done when the panel opens, sends queries, displays cited facts, renders model text safely, and exposes the daily briefing.
 - [ ] **T9 - Verification and regression suite** (REQ-1 to REQ-14). Done when targeted assistant tests, existing ingestion tests, dashboard tests, and a manual browser check pass.
+
+Stopped at: T7 - API endpoints and re-run integration. Reason: the active Python environment lacks FastAPI, pip, an existing virtual environment, and sudo package-install access, so API/browser verification cannot run here.

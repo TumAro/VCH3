@@ -8,6 +8,10 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from src.api.data_context import DataContext
+from src.services.assistant_evidence_service import AssistantEvidenceService
+from src.services.assistant_provider import SarvamAssistantProvider
+from src.services.assistant_rag_service import AssistantRagService
+from src.services.assistant_service import AssistantService
 from src.services.export_service import ExportService
 
 WEB_DIR = Path(__file__).resolve().parent.parent / "web"
@@ -16,6 +20,50 @@ WEB_DIR = Path(__file__).resolve().parent.parent / "web"
 def create_app(data_dir: Path, context: Optional[DataContext] = None) -> FastAPI:
     ctx = context or DataContext(Path(data_dir))
     app = FastAPI(title="Daily Stock Move Recommender")
+    provider = SarvamAssistantProvider()
+    rag_service = AssistantRagService(WEB_DIR.resolve().parent.parent)
+
+    def assistant_service() -> AssistantService:
+        loaded = ctx.current()
+        evidence_service = AssistantEvidenceService(
+            loaded.overview,
+            loaded.monthly,
+            loaded.notifications,
+        )
+        return AssistantService(evidence_service, rag_service, provider)
+
+    @app.get("/api/assistant/status")
+    def assistant_status():
+        status = provider.status()
+        return asdict(status)
+
+    @app.post("/api/assistant/chat")
+    def assistant_chat(payload: dict = Body(...)):
+        query = payload.get("query")
+        if not isinstance(query, str) or not query.strip():
+            return JSONResponse(
+                status_code=400,
+                content={"status": "error", "message": "A non-empty query is required."},
+            )
+        answer = assistant_service().answer(query.strip())
+        return {
+            "status": "fallback" if answer.fallback else "ok",
+            "text": answer.text,
+            "citations": [asdict(citation) for citation in answer.citations],
+            "tasks": [asdict(task) for task in answer.tasks],
+            "provider_status": answer.provider_status,
+        }
+
+    @app.get("/api/assistant/daily")
+    def assistant_daily():
+        answer = assistant_service().daily_briefing()
+        return {
+            "status": "fallback" if answer.fallback else "ok",
+            "text": answer.text,
+            "citations": [asdict(citation) for citation in answer.citations],
+            "tasks": [asdict(task) for task in answer.tasks],
+            "provider_status": answer.provider_status,
+        }
 
     @app.get("/api/status")
     def status():

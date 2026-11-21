@@ -127,6 +127,25 @@
           </table>
         </div>
       </section>
+
+      <section class="card" aria-labelledby="assistant-title">
+        <div class="card-head">
+          <h2 id="assistant-title">Manager Assistant</h2>
+          <p id="assistant-status" class="hint">Checking provider status...</p>
+        </div>
+        <div class="assistant-actions">
+          <button type="button" id="assistant-daily" class="btn btn-gold">Show daily tasks</button>
+        </div>
+        <div id="assistant-daily-output" class="assistant-output" aria-live="polite" hidden></div>
+        <div id="assistant-messages" class="assistant-messages" aria-live="polite"></div>
+        <form id="assistant-form" class="assistant-form">
+          <label for="assistant-query" class="sr-only">Ask the Manager Assistant</label>
+          <input id="assistant-query" type="text" maxlength="500"
+            placeholder="Ask for a trend, store summary or daily task">
+          <button type="submit" class="btn btn-primary">Ask</button>
+        </form>
+        <div id="assistant-citations" class="assistant-citations"></div>
+      </section>
     </section>
 
     <!-- Moves tab -->

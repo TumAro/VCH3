@@ -249,6 +249,30 @@ table.moves tbody tr.needs-signoff td:first-child { box-shadow: inset 4px 0 0 va
 .moves-empty { padding: 48px 16px; text-align: center; color: var(--muted); }
 .moves-empty strong { display: block; color: var(--text); margin-bottom: 4px; }
 
+.assistant-actions { display: flex; margin-bottom: 12px; }
+.assistant-output, .assistant-messages {
+  min-height: 44px;
+  margin: 8px 0;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  white-space: pre-wrap;
+}
+.assistant-output p, .assistant-messages p { margin: 4px 0; }
+.assistant-form { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+.assistant-form input { min-width: 0; }
+.assistant-citations { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.assistant-citation {
+  max-width: 100%;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
 /* ---------------------------------------------------------------- small screens */
 @media (max-width: 720px) {
   .topnav { gap: 12px; }
