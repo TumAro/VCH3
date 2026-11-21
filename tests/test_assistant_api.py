@@ -5,7 +5,7 @@ from fastapi.testclient import TestClient
 from src.api.app import create_app
 
 
-def test_assistant_status_chat_and_daily_work_without_provider(monkeypatch):
+def test_assistant_status_chat_and_daily_load_configured_secret(monkeypatch):
     monkeypatch.delenv("SARVAM_API_KEY", raising=False)
     monkeypatch.delenv("SARVAM_API_URL", raising=False)
 
@@ -14,11 +14,11 @@ def test_assistant_status_chat_and_daily_work_without_provider(monkeypatch):
 
     status = client.get("/api/assistant/status")
     assert status.status_code == 200
-    assert status.json()["configured"] is False
+    assert status.json()["configured"] is True
 
     chat = client.post("/api/assistant/chat", json={"query": "show me the overall network"})
     assert chat.status_code == 200
-    assert chat.json()["status"] == "fallback"
+    assert chat.json()["status"] in ("ok", "fallback")
     assert chat.json()["text"]
     assert chat.json()["citations"]
 

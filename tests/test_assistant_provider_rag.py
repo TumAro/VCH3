@@ -22,7 +22,7 @@ class FakeProvider(IAssistantProvider):
 
 
 def test_sarvam_provider_requires_key_and_url():
-    provider = SarvamAssistantProvider(api_key=None, api_url=None)
+    provider = SarvamAssistantProvider(api_key="", api_url="")
     status = provider.status()
     assert status.configured is False
     assert "KEY" in status.message or "key" in status.message

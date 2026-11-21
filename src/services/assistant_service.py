@@ -1,10 +1,13 @@
 """Orchestration between deterministic evidence and provider phrasing."""
+import logging
 from typing import Iterable, List
 
 from src.domain.assistant import AssistantAnswer, EvidenceCitation, EvidenceRecord
 from src.services.assistant_evidence_service import AssistantEvidenceService
 from src.services.assistant_provider import IAssistantProvider
 from src.services.assistant_rag_service import AssistantRagService
+
+LOGGER = logging.getLogger(__name__)
 
 
 class AssistantService:
@@ -53,7 +56,8 @@ class AssistantService:
         )
         try:
             text = self.provider.generate(system_prompt, f"Evidence:\n{evidence_prompt}\n\nQuestion: {query}")
-        except Exception:
+        except Exception as exc:
+            LOGGER.warning("Manager Assistant provider request failed: %s", exc)
             return AssistantAnswer(
                 text=factual_text,
                 citations=citations,

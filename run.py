@@ -1,5 +1,6 @@
 """Single-entry launcher for Manyavar Daily Stock Move Recommender."""
 import argparse
+import os
 from pathlib import Path
 import sys
 import webbrowser
@@ -10,6 +11,16 @@ from src.cli import run_pipeline
 
 
 def main():
+    secret_path = Path("secrets.env")
+    if secret_path.exists() and not os.getenv("SARVAM_API_KEY"):
+        for raw_line in secret_path.read_text(encoding="utf-8").splitlines():
+            line = raw_line.strip()
+            if line and not line.startswith("#") and "=" in line:
+                name, value = line.split("=", 1)
+                if name.strip() in ("SARVAM_API_KEY", "key") and value.strip():
+                    os.environ["SARVAM_API_KEY"] = value.strip()
+                    break
+
     parser = argparse.ArgumentParser(description="Manyavar Daily Stock Move Recommender")
     parser.add_argument("--cli", action="store_true", help="Run headless CLI pipeline and exit")
     parser.add_argument("--host", default="127.0.0.1", help="Server host (default: 127.0.0.1)")
