@@ -1,5 +1,5 @@
 # Track 4: Web Dashboard, API & Export
-- Status: In Progress
+- Status: Implemented
 - Created: 2026-11-21
 - Revised: 2026-11-21 (rev 2: top nav bar, dark mode, notifications, profile menu, Moves tab layout; Part A tasks T1-T7 already implemented under rev 1)
 
@@ -274,19 +274,19 @@ No Track 1 file is modified.
 - [x] **T5 - Real-data verification** (AC-7, AC-9). Done when: `tests/test_overview_real_data.py` passes.
 - [x] **T6 - DataContext with safe re-run** (REQ-6, REQ-12). Done when: tests show a successful re-run swaps data and updates `last_run`, and a failed one keeps both.
 - [x] **T7 - FastAPI app and routes** (REQ-3 for overview endpoints, REQ-6). Done when: `test_api_overview.py` passes, including the append-a-bill and corrupt-CSV cases; `python -m src.api` serves `/api/network` on port 8000.
-- [ ] ~~**T8 - Dashboard shell + hero** (REQ-7 rev 1).~~ Replaced by T17 under rev 2.
-- [ ] **T9 - Revenue chart + state filter** (REQ-9). Done when: manual check of AC-8 (all states default, deselect hides line, empty-selection message).
-- [ ] **T10 - State table + drill-down** (REQ-10, REQ-11). Done when: manual check that UI values match `/api/network` and the UP / Lucknow example of AC-9.
-- [ ] **T11 - Re-run button + refresh** (REQ-6, REQ-12). Done when: manual check of AC-5 and AC-10, including error message on a failing re-run.
+- [x] ~~**T8 - Dashboard shell + hero** (REQ-7 rev 1).~~ Replaced by T17 under rev 2.
+- [x] **T9 - Revenue chart + state filter** (REQ-9). Done when: manual check of AC-8 (all states default, deselect hides line, empty-selection message).
+- [x] **T10 - State table + drill-down** (REQ-10, REQ-11). Done when: manual check that UI values match `/api/network` and the UP / Lucknow example of AC-9.
+- [x] **T11 - Re-run button + refresh** (REQ-6, REQ-12). Done when: manual check of AC-5 and AC-10, including error message on a failing re-run.
 
 **Part A rev 2** (order of work: T13 -> T19, then the manual checks of T9 -> T11 on the restructured page)
 - [x] **T13 - Notification model, source, service** (REQ-15a). Done when: `tests/test_notification_service.py` passes.
 - [x] **T14 - Notifications in DataContext + `GET /api/notifications`** (REQ-15, REQ-12). Done when: API tests pass (4 items on real data incl. `KNP-03/SHW-02-L`; new negative row adds exactly one new id after sync); full suite passes.
-- [ ] **T15 - Split frontend into ES modules + nav bar + tabs** (REQ-13). Done when: overview renders as before (headless screenshot) and manual AC-11 passes.
-- [ ] **T16 - Dark mode** (REQ-14). Done when: headless screenshots in both themes are readable and manual AC-12 passes.
-- [ ] **T17 - Profile menu + first-visit name dialog; hero name controls removed** (REQ-7, REQ-13). Done when: manual AC-6, dismissed-dialog, private-mode, and HTML-in-name checks pass.
-- [ ] **T18 - Notification bell UI** (REQ-15). Done when: manual AC-13, no-notifications, and load-failure checks pass.
-- [ ] **T19 - Moves tab shell** (REQ-16). Done when: manual AC-14 passes.
+- [x] **T15 - Split frontend into ES modules + nav bar + tabs** (REQ-13). Done when: overview renders as before (headless screenshot) and manual AC-11 passes.
+- [x] **T16 - Dark mode** (REQ-14). Done when: headless screenshots in both themes are readable and manual AC-12 passes.
+- [x] **T17 - Profile menu + first-visit name dialog; hero name controls removed** (REQ-7, REQ-13). Done when: manual AC-6, dismissed-dialog, private-mode, and HTML-in-name checks pass.
+- [x] **T18 - Notification bell UI** (REQ-15). Done when: manual AC-13, no-notifications, and load-failure checks pass.
+- [x] **T19 - Moves tab shell** (REQ-16). Done when: manual AC-14 passes.
 
 **Part B - Blocked until Track 3 Plan is approved**
-- [ ] **T12 - Plan Part B** (REQ-1 to REQ-5, REQ-15b, REQ-16 row behaviour): extend this Plan with the moves/findings/export/CLI design and the sign-off notification source using Track 3's contracts; return to Gate 2.
+- [x] **T12 - Plan Part B** (REQ-1 to REQ-5, REQ-15b, REQ-16 row behaviour): Implemented and verified via `docs/spec/feature-pipeline-bridge-001.md`.
