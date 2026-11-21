@@ -6,7 +6,7 @@ import { initTheme } from "./theme.js";
 import { initProfile } from "./profile.js";
 import { initNotifications, refreshNotifications } from "./notifications.js";
 import { renderOverview, repaintChart } from "./overview.js";
-import { initMoves, setStores } from "./moves.js";
+import { initMoves, loadMoves, setStores } from "./moves.js";
 
 function showError(message) {
   const error = document.getElementById("rerun-error");
@@ -32,7 +32,7 @@ function initRerun() {
     showError("");
     try {
       await getJson("/api/sync", { method: "POST" });
-      await Promise.all([loadAll(), refreshNotifications()]);
+      await Promise.all([loadAll(), refreshNotifications(), loadMoves()]);
     } catch (e) {
       showError("Re-run failed, showing last good data. " + e.message);
     } finally {

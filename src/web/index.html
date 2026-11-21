@@ -169,7 +169,13 @@
         </label>
       </div>
 
-      <p id="moves-summary" class="summary">Showing 0 of 0 moves: 0 units, &#8377;0 MRP.</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin: 12px 0;">
+        <p id="moves-summary" class="summary">Showing 0 of 0 moves: 0 units, &#8377;0 MRP.</p>
+        <div style="display: flex; gap: 8px;">
+          <a href="/api/export/csv" download="moves.csv" class="btn" style="padding: 6px 14px; font-size: 13px; text-decoration: none; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); color: var(--text);">Export CSV</a>
+          <a href="/api/export/xlsx" download="moves.xlsx" class="btn btn-gold" style="padding: 6px 14px; font-size: 13px; text-decoration: none; border-radius: 6px;">Export Excel</a>
+        </div>
+      </div>
 
       <div class="card card-flush">
         <div class="table-wrap">
