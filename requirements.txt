@@ -1,0 +1,8 @@
+# Runtime
+fastapi==0.139.0
+uvicorn==0.50.2
+openpyxl==3.1.5
+
+# Test
+pytest==8.3.4
+httpx==0.28.1
