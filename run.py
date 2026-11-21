@@ -21,10 +21,13 @@ def main():
                     os.environ["SARVAM_API_KEY"] = value.strip()
                     break
 
+    default_port = int(os.environ.get("PORT", 8000))
+    default_host = os.environ.get("HOST", "127.0.0.1")
+
     parser = argparse.ArgumentParser(description="Manyavar Daily Stock Move Recommender")
     parser.add_argument("--cli", action="store_true", help="Run headless CLI pipeline and exit")
-    parser.add_argument("--host", default="127.0.0.1", help="Server host (default: 127.0.0.1)")
-    parser.add_argument("--port", type=int, default=8000, help="Server port (default: 8000)")
+    parser.add_argument("--host", default=default_host, help=f"Server host (default: {default_host})")
+    parser.add_argument("--port", type=int, default=default_port, help=f"Server port (default: {default_port})")
     parser.add_argument("--no-browser", action="store_true", help="Do not open browser automatically")
     parser.add_argument("--data-dir", type=Path, default=Path("data/csv"), help="Path to data directory")
     args = parser.parse_args()
